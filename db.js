@@ -7,12 +7,23 @@ async function dataConnection() {
     try {
         await client.connect();
         console.log("Connected to MongoDB");
+        await listDatabases(client);
+
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
     } finally {
         await client.close();
         console.log("MongoDB connection closed");
     }
+}
+
+function listDatabases(client) {
+    const databasesList = client.db().admin().listDatabases();
+
+    console.log(databasesList);
+    databasesList.databases.forEach(db => {
+        console.log(`- ${db.name}`);
+    });
 }
 
 dataConnection();

@@ -3,6 +3,14 @@ dotenv.config();
 
 const mongodb = require('mongodb').MongoClient;
 
+const dns = require('dns');
+
+dns.setServers([
+    '8.8.8.8',
+    '8.8.4.4',
+    '1.1.1.1'
+]);
+
 let _db;
 
 const initDb = (callback) => { 
@@ -10,9 +18,9 @@ const initDb = (callback) => {
     console.log("Database is already initialized");
     return callback(null, _db);
   }
-  mongodb.connect(process.env.MONGO_URI)
+  mongodb.connect(process.env.MONGODB_URI)
   .then((client) => {
-  _db = client.db();
+  _db = client.db("project1");
 
   console.log("Connected to MongoDB");
   console.log("Database:", _db.databaseName);
@@ -20,7 +28,7 @@ const initDb = (callback) => {
   callback(null, _db);
 })
     .catch((err) => {
-      console.error("Error connecting to MongoDB:", err);
+      console.error(err);
       callback(err, null);
     });
 };
@@ -32,6 +40,8 @@ const getDb = () => {
         return _db;
     }
 };
+
+
 
 module.exports = { 
     initDb, 

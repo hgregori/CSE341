@@ -14,11 +14,7 @@ mongodb.initDb((err) => {
         console.error("Error initializing MongoDB connection:", err);
     } else {
         app.listen(PORT, () => {
-            console.log(`DAtabase is initialized and server is running on port ${PORT   }`);
+            console.log(`Database is initialized and server is running on port ${PORT}`);
         });
     }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);   
 });

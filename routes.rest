@@ -1,0 +1,31 @@
+GET http://localhost:3000/users
+
+###
+GET http://localhost:3000/users/6aa450f6c8346bebfab2a3bc
+
+###
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "Greg",
+  "lastName": "Gregory",
+  "email": "GregGreg@example.com",
+  "favoriteColor": "Purple",
+  "birthday": "2001-04-07"
+}
+
+###
+PUT http://localhost:3000/users/691006ad345f18fbd151cf33
+Content-Type: application/json
+
+{
+  "firstName": "Greg",
+  "lastName": "Gregory",
+  "email": "GregGreg@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "2001-04-07"
+}
+
+###
+DELETE http://localhost:3000/users/691006ad345f18fbd151cf33

@@ -5,11 +5,13 @@ const doc = {
         title: 'Project 1 API',
         description: 'CSE341 Project 1 API'
     },
-    host: 'localhost:3000',
-    schemes: ['http', 'https'],   
+    host: 'cse341-mbw6.onrender.com',
+    schemes: ['https']
 }
 
 const outputFile = './swagger.json';
 const endpointsFiles = ['./routes/index.js'];
 
+
+// swagger generator
 swaggerAutogen(outputFile, endpointsFiles, doc);
